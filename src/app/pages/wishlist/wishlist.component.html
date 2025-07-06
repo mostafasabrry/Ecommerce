@@ -1,0 +1,42 @@
+<section class="bg-background dark:bg-background-dark my-20">
+  <h1
+    class="font-bold fa-2x capitalize my-5 text-text1 dark:text-text1-dark text-center"
+  >
+    My Wish List
+  </h1>
+
+  @for (wish of wishlistData; track wish._id) {
+  <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-4 gap-2 border-b">
+    <div>
+      <img
+        [src]="wish.imageCover"
+        class="w-full h-[120px] object-contain"
+        [alt]="wish.title"
+      />
+    </div>
+
+    <div class="flex justify-between items-center">
+      <div>
+        <h3 class="text-text2 dark:text-text2">Title: {{ wish.title }}</h3>
+        <h4
+          class="text-xl font-semibold tracking-tight text-text1 dark:text-[#7777bd]"
+        >
+          Price: {{ wish.price | currency : "GBP" }}
+        </h4>
+        <button (click)="removeItem(wish._id)" class="text-red-800">
+          <i class="fas fa-trash-can"></i>Remove
+        </button>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button
+          (click)="addTocart(wish._id)"
+          class="text-text2-dark bg-btn hover:bg-Hoverbtn dark:bg-[#1C8ADB] dark:hover:bg-blue-400 font-medium rounded-lg text-sm px-12 py-2.5 text-center transition-all duration-[.5s]"
+        >
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+</section>

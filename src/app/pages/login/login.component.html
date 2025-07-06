@@ -1,0 +1,152 @@
+<section
+  class="my-24 shadow-lg w-[70%] lg:w-[50%] m-auto rounded-md overflow-hidden"
+>
+  <div
+    class="dark:bg-[#3D4145] bg-[#F0F0F0] grid lg:grid-cols-[30%_minmax(0,1fr)]"
+  >
+    <div class="hidden lg:block bg-[red]">
+      <div class="h-full">
+        <img
+          src="/images2/auth.jpg"
+          class="w-full h-full object-cover"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="p-4">
+      <header class="text-center text-text1 dark:text-text2-dark mx-auto mb-3">
+        <h1 class="fa-2x">Login to App</h1>
+      </header>
+
+      <form
+        class=""
+        id="Login"
+        [formGroup]="Login"
+        (ngSubmit)="submitLoginForm()"
+      >
+        <div class="mb-3">
+          <input
+            formControlName="email"
+            type="email"
+            id="email"
+            class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+            placeholder="Email"
+          />
+          @let Email=Login.get('email'); @if (Email?.errors&&Email?.touched) {
+          <div
+            class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+            role="alert"
+          >
+            <svg
+              class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (Email?.getError('required')) {
+                <li>Email ia required</li>
+                } @else if (Email?.getError('email')) {
+                <li>invaild email</li>
+                }
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <input
+            formControlName="password"
+            type="password"
+            id="password"
+            class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+            placeholder="Password"
+          />
+
+          @let Password=Login.get('password'); @if
+          (Password?.errors&&Password?.touched) {
+          <div
+            class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+            role="alert"
+          >
+            <svg
+              class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (Password?.getError('required')) {
+                <li>Password ia required</li>
+                } @else if (Password?.getError('pattern')) {
+                <li>invaild Password</li>
+                }
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="">
+          <button
+            [disabled]="isLoading()"
+            type="submit"
+            class="text-text2-dark bg-btn hover:bg-Hoverbtn dark:bg-[#1C8ADB] dark:hover:bg-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all duration-[.5s]"
+          >
+            Login @if (isLoading()) {
+            <i class="fas fa-spin fa-spinner"></i>
+            }
+          </button>
+          @if (isSuccess()) {
+          <p
+            class="bg-[#1C8ADB] rounded-lg my-1 text-sm text-text2-dark px-2 py-2 text-center"
+          >
+            {{ isSuccess() }}
+          </p>
+          } @if (msgErorr()) {
+          <p
+            class="px-2 py-2 text-center text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+          >
+            {{ msgErorr() }}
+          </p>
+          }
+        </div>
+      </form>
+
+      <footer class="border-t-[.5px] border-text2 mt-5">
+        <div class="flex items-center justify-between mt-2">
+          <a
+            [routerLink]="['/forgetPassword']"
+            class="text-decoration-none text-[#1E40AF]"
+            role="button"
+            >forgetPassword?
+          </a>
+
+          <button
+            [routerLink]="['/register']"
+            type="button"
+            class="focus:outline-none text-text2-dark bg-[#15803d] hover:bg-[#059669] focus:ring-4 focus:ring-[#86efac] font-medium rounded-lg text-sm px-3 py-2 dark:bg-[#16a34a] dark:hover:bg-[#15803d] dark:focus:ring-[#166534]"
+          >
+            Create new account
+          </button>
+        </div>
+      </footer>
+    </div>
+  </div>
+</section>

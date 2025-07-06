@@ -1,0 +1,260 @@
+<section class="my-24 shadow-lg w-[70%] m-auto rounded-md overflow-hidden">
+  <div
+    class="dark:bg-[#3D4145] bg-[#F0F0F0] grid lg:grid-cols-[30%_minmax(0,1fr)]"
+  >
+    <div class="hidden lg:block bg-[red]">
+      <div class="h-full">
+        <img
+          src="/images2/auth.jpg"
+          class="w-full h-full object-cover"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="p-4">
+      <header class="text-center text-text1 dark:text-text2-dark mx-auto mb-3">
+        <h1 class="fa-2x">Register to App</h1>
+      </header>
+
+      <form
+        class=""
+        id="register"
+        [formGroup]="register"
+        (ngSubmit)="submitRegisterForm()"
+      >
+        <div class="mb-3">
+          <input
+            formControlName="name"
+            type="text"
+            id="name"
+            class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+            placeholder="Name"
+          />
+
+          @let Name=register.get('name'); @if (Name?.errors&&Name?.touched) {
+          <div
+            class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+            role="alert"
+          >
+            <svg
+              class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (Name?.getError('required')) {
+                <li>name ia required</li>
+                }@else if (Name?.getError('minlength')) {
+                <li>name minlength : 3</li>
+                } @else if (Name?.getError('maxlength')) {
+                <li>name maxlength:20</li>
+                }
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <input
+            formControlName="email"
+            type="email"
+            id="email"
+            class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+            placeholder="Email"
+          />
+          @let Email=register.get('email'); @if (Email?.errors&&Email?.touched)
+          {
+          <div
+            class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+            role="alert"
+          >
+            <svg
+              class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (Email?.getError('required')) {
+                <li>Email ia required</li>
+                } @else if (Email?.getError('email')) {
+                <li>invaild email</li>
+                }
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <input
+            formControlName="password"
+            type="password"
+            id="password"
+            class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+            placeholder="Password"
+          />
+
+          @let Password=register.get('password'); @if
+          (Password?.errors&&Password?.touched) {
+          <div
+            class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+            role="alert"
+          >
+            <svg
+              class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (Password?.getError('required')) {
+                <li>Password ia required</li>
+                } @else if (Password?.getError('pattern')) {
+                <li>invaild Password</li>
+                }
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <input
+            formControlName="rePassword"
+            type="password"
+            id="repassword"
+            class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+            placeholder="RePassword"
+          />
+          @let RePassword=register.get('rePassword'); @if
+          (register.getError('mismatch') &&RePassword?.touched) {
+          <div
+            class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+            role="alert"
+          >
+            <svg
+              class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                <li>password confirmation incorrect !</li>
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <input
+            formControlName="phone"
+            type="tel"
+            id="phone"
+            class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+            placeholder="Phone"
+          />
+
+          @let Phone=register.get('phone'); @if (Phone?.errors&&Phone?.touched)
+          {
+          <div
+            class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+            role="alert"
+          >
+            <svg
+              class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              />
+            </svg>
+            <span class="sr-only">Danger</span>
+            <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (Phone?.getError('required')) {
+                <li>Phone ia required</li>
+                } @else if (Phone?.getError('pattern')) {
+                <li>invaild Phone</li>
+                }
+              </ul>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="">
+          <button
+            [disabled]="isLoading()"
+            type="submit"
+            class="text-text2-dark bg-btn hover:bg-Hoverbtn dark:bg-[#1C8ADB] dark:hover:bg-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all duration-[.5s]"
+          >
+            Register @if (isLoading()) {
+            <i class="fas fa-spin fa-spinner"></i>
+            }
+          </button>
+          @if (isSuccess()) {
+          <p
+            class="bg-[#1C8ADB] rounded-lg my-1 text-sm text-text2-dark px-2 py-2 text-center"
+          >
+            {{ isSuccess() }}
+          </p>
+          } @if (msgErorr()) {
+          <p
+            class="px-2 py-2 text-center text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+          >
+            {{ msgErorr() }}
+          </p>
+          }
+        </div>
+      </form>
+
+      <footer>
+        <p class="text-center small dark:text-text2-dark">
+          Already a member?
+          <a
+            [routerLink]="['/login']"
+            class="link-secondary text-decoration-none"
+            role="button"
+            >LogIn <i class="fa-solid fa-angle-right"></i
+          ></a>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>

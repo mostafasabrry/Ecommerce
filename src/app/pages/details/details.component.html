@@ -1,0 +1,53 @@
+@if (detailsProduct) {
+<section class="mt-16">
+  <h1 class="font-bold fa-2x capitalize my-5 text-text1 dark:text-text1-dark">
+    details Product
+  </h1>
+
+  <div class="md:flex items-center gap-x-6">
+    <div class="mx-auto w-1/2 md:w-1/4 h-full">
+      <img
+        [src]="detailsProduct.imageCover"
+        class="w-100 h-full object-cover"
+        [alt]="detailsProduct.title"
+      />
+    </div>
+    <div class="w-3/4 mx-auto mt-5 text-center md:mt-0 md:text-left">
+      <div class="space-y-3">
+        <h2
+          class="font-semibold tracking-tight text-text2 dark:text-text2-dark"
+        >
+          {{ detailsProduct.title }}
+        </h2>
+        <p class="dark:text-text2">{{ detailsProduct.description }}</p>
+
+        <h5
+          class="text-xl font-semibold tracking-tight text-text2 dark:text-text2-dark"
+        >
+          {{ detailsProduct.category.name }}
+        </h5>
+
+        <div class="flex justify-between items-center">
+          <span class="text-xl font-bold text-text2 dark:text-text2-dark">
+            {{ detailsProduct.price }}</span
+          >
+          <div class="flex items-center">
+            <i class="fas fa-star text-star"></i>
+            <span
+              class="bg-rating text-text1 dark:bg-text1 dark:text-rating text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800"
+              >{{ detailsProduct.ratingsAverage }}</span
+            >
+          </div>
+        </div>
+
+        <button
+          (click)="addTocart(detailsProduct.id)"
+          class="text-text2-dark bg-btn hover:bg-Hoverbtn dark:bg-[#1C8ADB] dark:hover:bg-blue-400 font-medium rounded-lg text-sm px-6 lg:px-12 py-2.5 text-center transition-all duration-[.5s]"
+        >
+          + Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+}

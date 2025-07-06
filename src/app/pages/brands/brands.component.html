@@ -1,0 +1,36 @@
+<section class="mt-20">
+  <h1 class="font-bold fa-2x capitalize my-5 text-text1 dark:text-text1-dark">
+    All Brands
+  </h1>
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    @for (brand of brands;track brand._id) {
+
+    <div
+      (click)="reload(brand.name)"
+      class="max-w-sm rounded-lg shadow-sm border hover:shadow-borderhover dark:hover:shadow-borderhover-dark hover:shadow-lg transition-shadow duration-500 border-border1 dark:border-border1-dark"
+    >
+      <div>
+        <img class="w-full" [src]="brand.image" [alt]="brand.name" />
+      </div>
+
+      <div class="p-2">
+        <h5
+          class="mb-2 text-xl font-semibold tracking-tight text-text1 dark:text-[#7777bd] text-center"
+        >
+          {{ brand.name }}
+        </h5>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+
+<ngx-spinner
+  name="load2"
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#fff"
+  type="ball-circus"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>

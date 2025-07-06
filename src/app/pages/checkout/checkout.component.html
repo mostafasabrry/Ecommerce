@@ -1,0 +1,132 @@
+<section
+  class="bg-background rounded shadow border p-4 mx-auto dark:bg-background-dark mt-20"
+>
+  <h1 class="font-bold fa-2x capitalize my-5 text-text1 dark:text-text1-dark">
+    Check Out
+  </h1>
+
+  <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+    <div class="mb-1">
+      @let detailsConrol=checkOutForm.get('details');
+
+      <textarea
+        formControlName="details"
+        placeholder="details"
+        id="details"
+        class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+      >
+      </textarea>
+
+      @if (detailsConrol?.errors&&detailsConrol?.touched) {
+      <div
+        class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (detailsConrol?.getError('required')) {
+            <li>details is required</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="mb-1">
+      @let phoneControl=checkOutForm.get('phone');
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        placeholder="phone"
+        class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+      />
+
+      @if (phoneControl?.errors&&phoneControl?.touched) {
+      <div
+        class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (phoneControl?.getError('required')) {
+            <li>phone is required</li>
+            } @else if (phoneControl?.getError('pattern')) {
+            <li>Enter Vaild phone!!</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="mb-1">
+      @let cityControl=checkOutForm.get('city');
+
+      <input
+        formControlName="city"
+        type="text"
+        id="city"
+        placeholder="city"
+        class="block w-full p-2.5 rounded-lg border shadow-sm text-sm dark:bg-[#272B30] dark:border-[#32383E] dark:placeholder:text-text2-dark dark:text-text2-dark dark:focus:border-[#304C72] dark:focus:ring-border1-dark dark:focus:border-[3px] bg-[white] border-[#cfcfcf] focus:border-[#B7D0F3] focus:ring-[#B7D0F3] focus:border-[2px]"
+      />
+
+      @if (cityControl?.errors&&cityControl?.touched) {
+      <div
+        class="flex p-2 mb-4 text-sm text-[#991B1B] rounded-lg bg-[#FEF2F2] dark:bg-[#1F2937] dark:text-[#F87171]"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Danger</span>
+        <div>
+          <ul class="mt-1.5 list-disc list-inside">
+            @if (cityControl?.getError('required')) {
+            <li>city is required</li>
+            }
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
+
+    <button
+      type="submit"
+      class="text-text2-dark bg-btn hover:bg-Hoverbtn dark:bg-[#1C8ADB] dark:hover:bg-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all duration-[.5s]"
+    >
+      Online Payment
+    </button>
+  </form>
+</section>
