@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-allorders',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './allorders.component.html',
   styleUrl: './allorders.component.scss'
 })
-export class AllordersComponent {
+export class AllordersComponent implements OnInit {
 
+  router=inject(Router);
+  
+
+  ngOnInit(): void {
+     this.router.navigate(['/home']);
+  }
 }
